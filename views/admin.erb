@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1>ADMIN</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <a href="/stylists"><button class="btn btn-default btn-lg">See all Stylists</button></a>
+          <a href="/stylists/new"><button class="btn btn-primary btn-lg">Add Stylist</button></a>
+        </div>
+        <div class="col-md-6">
+          <a href="/clients"><button class="btn btn-default btn-lg">See all Clients</button></a>
+        </div>
+      </div>
+  </div>
+    <div class="col-md-2"><img class="thumb" src="images/newhome2.jpg"></div>
+    <div class="col-md-2"><img class="thumb" src="images/POP_images-01.jpg"></div>
+    <div class="col-md-2"><img class="thumb" src="images/ROSIE_S01_131.jpg"></div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-md-2"><img class="thumb" src="images/ROSIE_S02_837.jpg"></div>
+  <div class="col-md-2"><img class="thumb" src="images/ROSIE_S03_0047.jpg"></div>
+  <div class="col-md-2"><img class="thumb" src="images/ROSIE_S05_0094_1.jpg"></div>
+
+  <div class="col-md-6">
+    <h2>HOW WE SERVE OUR CUSTOMERS</h2>
+    <p> We want to make their salon experience as unique and memorable as we can. Our mission is to consistently bring them the freshest styles and ideas, by keeping up with the current trends and constantly educating ourselves about the best practices. All of us should support one another in their personal strengths and goals within the beauty industry and the community. We must pay close attention to the details of our service, maintain the highest standard in the cleanliness of our salon, exceed their expectations, so that they keep coming back for more! </p>
+    </div>
+</div>
+
+    <p> Add clients to any stylist:</p>
+
+    <form action="/clients" method="post">
+      <label for="stylist_id">Select a List</label>
+          <select id='stylist_id' name='stylist_id' type='text'>
+            <% @stylists.each() do |stylist| %>
+              <option value="<%= stylist.id()%>"> <%= stylist.name() %> </option>
+            <% end %>
+          </select>
+      <label for="name">Description of the task:</label>
+      <input id="name" name="name" type="text">
+
+      <button type="submit">Add client</button>
+    </form>
+
+
+    <% if @stylists.any?() %>
+    <p>Click on a stylist to see its clients:</p>
+
+    <ul>
+      <% @stylists.each do |stylist| %>
+      <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are no stylists yet!</p>
+    <% end %>

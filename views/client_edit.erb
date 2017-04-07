@@ -1,0 +1,17 @@
+<h1>Update <%=@client.name() %> </h1>
+<hr>
+    <form action="/clients/<%= @client.id() %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <label for="name">Rename:</label>
+      <input id="name" name="name" type="text">
+      <input value="<%=@client.stylist_id%>" name="stylist_id" type="hidden">
+      <br></br>
+      <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+
+<hr>
+
+<form action="/clients/<%= @client.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button class="btn btn-danger" type="submit">Delete client</button>
+</form>

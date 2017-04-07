@@ -1,0 +1,20 @@
+<h1>Our Current Stylists</h1>
+
+    <% if @stylists.any?() %>
+      <h3>Here are your stylists:</h3>
+
+      <ul>
+        <% @stylists.each() do |stylist| %>
+          <li><a class="notwhite" href="/stylist/<%=stylist.id()%>"><%= stylist.name() %></a> </li>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+        <p>There are no stylists yet!</p>
+        <a href="/stylists/new"><button class="btn btn-primary btn-lg">Add Stylist</button></a>
+    <% end %>
+
+    <hr>
+
+    <a href="/admin"><button class="btn btn-primary">Return to Admin</button></a>

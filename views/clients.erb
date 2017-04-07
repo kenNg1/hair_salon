@@ -1,0 +1,26 @@
+<h1>Our Current Clients</h1>
+
+    <% if @clients.any?() %>
+      <h3>Here are your stylists:</h3>
+
+      <ul>
+        <% @clients.each() do |client| %>
+          <li><%= client.name() %></li>
+          <a href="/client/<%=client.id%>/edit"><button class="btn btn-default btn-xs">Edit client</button></a>
+          <form action="/clients" method="post">
+            <input name="_method" value="delete" type="hidden">
+            <input name="id" value="<%=client.id()%>" id="id" type="hidden">
+            <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+          </form>
+        <% end %>
+      </ul>
+
+    <% else %>
+
+        <p>There are no clients yet!</p>
+        <a href="/clients/new"><button class="btn btn-primary btn-lg">Add client</button></a>
+    <% end %>
+
+    <hr>
+
+    <a href="/admin"><button class="btn btn-primary">Return to Admin</button></a>
