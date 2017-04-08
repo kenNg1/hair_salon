@@ -55,6 +55,13 @@ require('sinatra')
     erb(:stylist)
     end
 
+      delete("/stylists") do
+        stylist = Stylist.find(params.fetch("id").to_i)
+        stylist.delete()
+        erb(:stylist_success)
+       end
+
+
     delete("/clients") do
       client = Client.find(params.fetch("id").to_i)
       client.delete()

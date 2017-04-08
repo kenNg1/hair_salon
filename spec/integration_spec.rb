@@ -6,12 +6,12 @@ require('capybara/rspec')
     describe('Create a new stylist', {:type => :feature}) do
       it('will find the form and create a new stylist then go to the stylists lists') do
         visit('/')
-        visit('/admin')
-        visit('/stylists/new')
+        click_link('ADMIN')
+        click_link('Add Stylist')
         fill_in('name', :with =>'Sheeja')
         click_button('Add Stylist')
         expect(page).to have_content('Success!')
-        visit('/stylists')
+        click_link('Return to Stylists')
         expect(page).to have_content('Sheeja')
       end
     end

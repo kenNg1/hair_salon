@@ -9,9 +9,14 @@
       <button class="btn btn-primary" type="submit">Update</button>
     </form>
 
+<br>
+
+    <form action="/clients/<%= @client.id() %>" method="post">
+      <input name="_method" type="hidden" value="delete">
+      <button class="btn btn-danger" type="submit">Delete client</button>
+    </form>
+
 <hr>
 
-<form action="/clients/<%= @client.id() %>" method="post">
-  <input name="_method" type="hidden" value="delete">
-  <button class="btn btn-danger" type="submit">Delete client</button>
-</form>
+<a href="/clients"><button class="btn btn-default">Return to Clients</button></a>
+<a href="/admin"><button class="btn btn-primary">Return to Admin</button></a>

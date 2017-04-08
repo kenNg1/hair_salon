@@ -56,6 +56,7 @@ class Stylist
 
   def delete()
     DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
+    DB.exec("UPDATE clients SET stylist_id = 0 WHERE stylist_id = #{self.id()};")
     # DB.exec("DELETE FROM clients WHERE stylist_id = #{self.id()};") chosen not to delete this when a stylist leaves
   end
 end
